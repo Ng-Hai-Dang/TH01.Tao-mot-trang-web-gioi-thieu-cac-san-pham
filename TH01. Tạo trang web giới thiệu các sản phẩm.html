@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape Room - Đặt Phòng Giải Đố</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.20.6/babel.min.js"></script>
+    <style>
+        .banner {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .banner:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white">
+    <div id="root"></div>
+    <script type="text/babel">
+        const stories = [
+            {
+                id: 1,
+                title: "Gone - Mất Tích",
+                difficulty: "4 sao",
+                genre: "Kinh dị, Trinh thám, Tâm linh",
+                players: "4 - 8",
+                address: "Tầng 5, số 189 Hoàng Cầu, HN",
+                description: "Dựa vào 1 vụ án có thật xảy ra vào những năm 90 tại khu tập thể Khâm Thiên, một gia đình 3 người đột nhiên mất tích không để lại manh mối gì. Tuy nhiên, cứ sau 12h đêm căn nhà lại phát ra những tiếng động lạ. Đã rất nhiều nhà điều tra đến để khám phá bí ẩn nhưng đều không thấy trở lại. Nhập vai vào 1 nhóm thám tử tập sự, bạn tình cờ tìm lại được hồ sơ vụ án Mất Tích này và quyết định ở căn nhà qua đêm. Liệu bạn có đủ khả năng tìm ra được sự thật kinh hoàng đã được chôn giấu kỹ suốt 10 năm hay sẽ bị căn nhà “nuốt chửng”?"
+            },
+            {
+                id: 2,
+                title: "The Morgue - Giao Ước Máu",
+                difficulty: "5 sao",
+                genre: "Kinh dị, Bùa ngải, Sudden Death",
+                players: "4 - 8",
+                address: "Tầng 5, số 189 Hoàng Cầu, HN",
+                description: "Nhập vai vào những thực tập sinh ngành Y, người chơi được cử đến làm việc tại một nhà xác bệnh viện trong thành phố. Vào một buổi giao ca như thường lệ, nhóm sinh viên phát hiện ra những bí mật đáng sợ đằng sau những hoạt động cất giữ xác mờ ám ở nơi đây. Họ không hề biết chính sự tò mò đó đã đưa cả nhóm đến với ranh giới của sự sống và cái chết, của những nghi thức hiến tế man rợ kinh hoàng! Liệu họ sẽ là người đưa tội ác ra ánh sáng hay lại là những nạn nhân tiếp theo kết thúc cuộc đời mình nơi nhà xác lạnh lẽo, đầy tăm tối này."
+            },
+            {
+                id: 3,
+                title: "Hide ‘N Seek - Trốn Tìm",
+                difficulty: "4 sao",
+                genre: "Kinh dị, Hành động, Huyền bí",
+                players: "4 - 8",
+                address: "Tầng 5, số 189 Hoàng Cầu, HN",
+                description: "TRỐN TÌM - Một trò chơi vốn đã quen thuộc với tuổi thơ của rất nhiều người nhưng sẽ ra sao nếu trò chơi ấy còn có cả những vị khách không mời mà tới? Sau một hồi tham gia thử thách gan dạ ở trường học cũ bị đồn là ma ám, bạn nhận ra tất cả các thành viên trong nhóm đều đang tụ tập ở lớp. Vậy người đang đếm ngược ở ngoài sân trường là ai? Họ 'TÌM' bạn với mục đích gì? Chạy TRỐN hay tiếp tục dấn thân để khám phá ra danh tính của người lạ mặt, quyết định là ở bạn!"
+            },
+            {
+                id: 4,
+                title: "The Illusion - Ảo Mộng",
+                difficulty: "4 sao",
+                genre: "Kinh dị, Trinh thám, Tâm linh",
+                players: "4 - 8",
+                address: "Tầng 5, số 189 Hoàng Cầu, HN",
+                description: "Giật mình tỉnh giấc giữa đêm, lưng áo Hân ướt đẫm mồ hôi. Đã là ngày thứ 4 liên tiếp cô gặp cùng một cơn ác mộng. Cô mơ thấy mình đang đứng trước căn phòng với cánh cửa cũ kĩ màu đỏ, vang lên bên trong là những tiếng cầu cứu bí ẩn. Bỗng dưng cánh cửa mở nhẹ, 1 bàn tay đầy máu thò ra vẫy gọi Hân. Như có một ma lực thôi thúc mình tiến về phía trước, cô bước đi vô hồn và dần tan biến trong làn khói mờ mịt ma quỷ. Hành trình này sẽ đưa Hân đi đến đâu? Bí ẩn này đang chờ đón bạn."
+            },
+            {
+                id: 5,
+                title: "Incantation - Ngải",
+                difficulty: "5 sao",
+                genre: "Kinh dị, Bùa ngải, Sudden Death, Multiple Flows",
+                players: "4 - 8",
+                address: "Tầng 5, số 189 Hoàng Cầu, HN",
+                description: "Câu chuyện xảy ra ở 1 dãy trọ sinh viên những năm 1980. Việc 1 sinh viên đã treo cổ tự tử mà không để lại lời trăn trối nào đã gây rúng động báo đài thời đó. Dù đã rất cố gắng nhưng công cuộc điều tra đều đi vào ngõ cụt. Có nhiều tin đồn cô sinh viên xấu số vẫn lảng vảng trong phòng, có người thậm chí còn khẳng định họ đã nhìn thấy bóng trắng đi lại quanh dãy trọ ban đêm, hù doạ không cho họ ngủ lại. Trong vai 1 nhóm sinh viên nghèo năm nhất đang tìm phòng để chuẩn bị nhập học, bạn không còn sự lựa chọn nào ngoài việc phải vào dãy trọ bị ma ám đó để thuê. Những điều gì đang chờ các bạn? Liệu các tin đồn có đúng hay chỉ là thần hồn nát thần tính? Câu trả lời sẽ có ở đêm nay."
+            }
+        ];
+
+        function StoryBanner({ story, onClick }) {
+            return (
+                <div
+                    className="banner bg-gray-800 rounded-lg p-4 mb-4 cursor-pointer"
+                    onClick={() => onClick(story)}
+                >
+                    <h3 className="text-xl font-bold">{story.title}</h3>
+                    <p className="text-gray-400">Độ khó: {story.difficulty}</p>
+                </div>
+            );
+        }
+
+        function StoryDetails({ story }) {
+            return (
+                <div className="bg-gray-800 rounded-lg p-6 mt-4">
+                    <h2 className="text-2xl font-bold mb-4">{story.title}</h2>
+                    <p><strong>Độ khó:</strong> {story.difficulty}</p>
+                    <p><strong>Thể loại:</strong> {story.genre}</p>
+                    <p><strong>Số người chơi:</strong> {story.players}</p>
+                    <p><strong>Địa chỉ:</strong> {story.address}</p>
+                    <p className="mt-4">{story.description}</p>
+                </div>
+            );
+        }
+
+        function App() {
+            const [selectedStory, setSelectedStory] = React.useState(null);
+
+            return (
+                <div className="container mx-auto p-4">
+                    <h1 className="text-4xl font-bold text-center mb-8">Escape Room - Đặt Phòng Giải Đố</h1>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h2 className="text-2xl font-semibold mb-4">Danh Sách Cốt Truyện</h2>
+                            {stories.map(story => (
+                                <StoryBanner
+                                    key={story.id}
+                                    story={story}
+                                    onClick={setSelectedStory}
+                                />
+                            ))}
+                        </div>
+                        <div>
+                            {selectedStory ? (
+                                <StoryDetails story={selectedStory} />
+                            ) : (
+                                <p className="text-gray-400">Chọn một cốt truyện để xem chi tiết.</p>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
